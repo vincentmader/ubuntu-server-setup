@@ -25,7 +25,12 @@ def create_nginx_server_block(domain, ip_address):
     content += "        include proxy_params;\n"
     content += "    }\n"
     content += "}"
-    print(content)
+
+
+def get_server_domain_and_address():
+    domain = "sonoapp.de"  # TODO Move to config? Get from input?
+    ip_address = get_ip_address()
+    return domain, ip_address
 
 
 if __name__ == "__main__":
@@ -34,7 +39,5 @@ if __name__ == "__main__":
     install_nginx()
     setup_firewall_for_nginx()
 
-    domain = "sonoapp.de"
-    ip_address = get_ip_address()
-    print(ip_address)
+    domain, ip_address = get_server_domain_and_address()
     nginx_server_block = create_nginx_server_block(domain, ip_address)
