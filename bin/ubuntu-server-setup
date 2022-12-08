@@ -18,7 +18,7 @@ is_executable() {
 }
 
 if [[ ! $(is_executable "make") ]]; then 
-    if [[ ! $(is_running_ubuntu) ]]; then 
+    if [[ $(is_running_ubuntu) ]]; then 
         apt install make
     else
         echo "Error: These scripts are written for Ubuntu!"
