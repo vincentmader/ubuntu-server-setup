@@ -1,3 +1,5 @@
+from time import sleep
+
 from utils.cprint import cprint
 from utils.shell import execute
 from utils.shell import user_does_exist
@@ -8,6 +10,7 @@ def enable_firewall():
     execute(["ufw", "allow", "OpenSSH"])
     execute(["ufw", "enable"])
     execute(["ufw", "status"])
+    sleep(1)
 
 
 def create_new_user():
