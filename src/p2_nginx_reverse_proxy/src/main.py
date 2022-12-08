@@ -1,3 +1,5 @@
+import os
+
 from utils.cprint import cprint
 from utils.shell import execute
 from utils.shell import get_ip_address
@@ -41,7 +43,8 @@ def get_server_domain_and_address():
 def enable_site(domain):
     available = f"/etc/nginx/sites-available/{domain}"
     enabled = f"/etc/nginx/sites-enabled/"
-    execute(["ln", "-s", available, enabled])
+    if not os.path.exists(enabled):
+        execute(["ln", "-s", available, enabled])
 
 
 if __name__ == "__main__":
