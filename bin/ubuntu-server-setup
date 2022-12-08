@@ -17,20 +17,19 @@ is_executable() {
     fi
 }
 
-apt update
-apt -y upgrade
+if [[ $(is_running_ubuntu) == true ]]; then 
+    apt update
+    apt -y upgrade
 
-if [[ $(is_executable "make") == false ]]; then 
-    if [[ $(is_running_ubuntu) == true ]]; then 
+    if [[ $(is_executable "make") == false ]]; then 
         apt -y install make
-    else
-        echo "Error: These scripts are written for Ubuntu!"
-        exit
+    fi
+    if [[ $(is_executable "pip3") == false ]]; then 
+        apt -y install python3-pip
     fi
 fi
 
 if [ ! -d ../venv/ ]; then
-    apt -y install python3-pip
     pip3 install virtualenv
     python3 -m virtualenv ../venv/
     ../venv/bin/pip3 install -r ../requirements.txt
