@@ -1,6 +1,6 @@
 #!/bin/sh
 
-function is_running_ubuntu {
+is_running_ubuntu() {
     version="$(cat /etc/issue 2> /dev/null)"
     if [[ $version == *"Ubuntu"* ]]; then
         true
@@ -9,7 +9,7 @@ function is_running_ubuntu {
     fi
 }
 
-function is_executable {
+is_executable() {
     if command -v "$1" &> /dev/null; then
         echo 0
     else
