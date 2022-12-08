@@ -5,7 +5,7 @@ from utils.shell import user_does_exist
 
 def enable_firewall():
     execute(["ufw", "allow", "OpenSSH"])
-    execute(["uft", "enable"])
+    execute(["ufw", "enable"])
 
 
 def create_new_user():
