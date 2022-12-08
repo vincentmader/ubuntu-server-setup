@@ -26,4 +26,4 @@ if [[ ! $(is_executable "make") ]]; then
     fi
 fi
 
-cd ../ && make all
+cd ../ && make -s all
