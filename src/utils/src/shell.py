@@ -19,3 +19,12 @@ def is_installed_executable(command):
 def is_running_on_ubuntu():
     import platform
     return 'ubuntu' in platform.version().lower()
+
+
+def user_does_exist(user):
+    import pwd
+    try:
+        pwd.getpwnam(user)
+    except KeyError:
+        return False
+    return True

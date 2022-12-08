@@ -1,14 +1,6 @@
 from utils.cprint import cprint
 from utils.shell import execute
-
-
-def user_does_exist(user):
-    import pwd
-    try:
-        pwd.getpwnam(user)
-    except KeyError:
-        return False
-    return True
+from utils.shell import user_does_exist
 
 
 def create_new_user():
