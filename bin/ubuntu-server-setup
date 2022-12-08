@@ -26,4 +26,9 @@ if [[ $(is_executable "make") == false ]]; then
     fi
 fi
 
+if [ ! -d ../venv/ ]; then
+    python3 -m virtualenv ../venv/
+    ../venv/bin/pip3 install -r ../requirements.txt
+fi
+
 cd ../ && make -s all
