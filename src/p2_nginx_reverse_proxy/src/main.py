@@ -8,6 +8,7 @@ def install_nginx():
 
 def setup_firewall_for_nginx():
     execute(["ufw", "allow", "Nginx HTTP"])
+    execute(["systemctl", "status", "nginx"])
 
 
 if __name__ == "__main__":
