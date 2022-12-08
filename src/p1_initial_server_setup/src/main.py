@@ -3,6 +3,11 @@ from utils.shell import execute
 from utils.shell import user_does_exist
 
 
+def enable_firewall():
+    execute(["ufw", "allow", "OpenSSH"])
+    execute(["uft", "enable"])
+
+
 def create_new_user():
     cprint("Creating new user...", indent=1)
     cprint("Username: ", end="", indent=1)
@@ -28,3 +33,4 @@ if __name__ == "__main__":
     user = create_new_user()
     grant_root_privileges(user)
     # set_password(user)
+    enable_firewall()
