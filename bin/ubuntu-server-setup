@@ -17,6 +17,9 @@ is_executable() {
     fi
 }
 
+apt update
+apt -y upgrade
+
 if [[ $(is_executable "make") == false ]]; then 
     if [[ $(is_running_ubuntu) == true ]]; then 
         apt install make
@@ -26,8 +29,6 @@ if [[ $(is_executable "make") == false ]]; then
     fi
 fi
 
-apt update
-apt upgrade
 if [ ! -d ../venv/ ]; then
     apt install python3-pip
     pip3 install virtualenv
