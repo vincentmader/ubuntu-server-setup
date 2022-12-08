@@ -10,7 +10,7 @@ def create_new_user():
 
 
 def grant_root_privileges(user):
-    execute(["usermod", f"-aG sudo {user}"])
+    execute(["usermod -aG", f"sudo {user}"])
 
 
 if __name__ == "__main__":
