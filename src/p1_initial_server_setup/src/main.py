@@ -1,11 +1,22 @@
 from utils.cprint import cprint
 from utils.shell import execute
 
+
+def user_does_exist(user):
+    import pwd
+    try:
+        pwd.getpwnam(user)
+    except KeyError:
+        return False
+    return True
+
+
 def create_new_user():
     cprint("Creating new user...", indent=1)
     cprint("Username: ", end="", indent=1)
     user = input()
-    execute(["useradd", user])
+    if not user_does_exist(user):
+        execute(["useradd", user])
     return user
 
 
@@ -14,6 +25,7 @@ def grant_root_privileges(user):
 
 
 def set_password(user):
+    # TODO This is not working at the moment and has to be done manually!
     execute(["passwd", user])
 
 
@@ -21,6 +33,6 @@ if __name__ == "__main__":
     cprint("Part 1: Initial Server Setup", color="blue", newline=True)
 
     user = "vinc"
-    # user = create_new_user()
+    user = create_new_user()
     grant_root_privileges(user)
-    set_password(user)
+    # set_password(user)
