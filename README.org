@@ -1,0 +1,16 @@
+* Automated Server Setup
+
+This is a collection of scripts aimed at automating the process of setting up Ubuntu 22.04 servers. 
+
+It is built upon the following resources:
+- Part 1: [[https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-22-04][Digital Ocean Guide - Initial Server Setup with Ubuntu 22.04]]
+- Part 2: [[https://www.digitalocean.com/community/tutorials/how-to-configure-nginx-as-a-reverse-proxy-on-ubuntu-22-04][Digital Ocean Guide - How to configure Nginx as a reverse-proxy on Ubuntu 22.04]]
+
+**** Usage
+On your Ubuntu server, run
+#+begin_src shell
+git clone https://github.com/vincentmader/ubuntu-server-setup && cd ./ubuntu-server-setup/bin/ && ./ubuntu-server-setup.sh
+#+end_src
+
+**** Prerequisites
+- `git` command-line utility
