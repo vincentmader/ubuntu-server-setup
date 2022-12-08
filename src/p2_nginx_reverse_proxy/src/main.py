@@ -38,6 +38,12 @@ def get_server_domain_and_address():
     return domain, ip_address
 
 
+def enable_site(domain):
+    available = f"/etc/nginx/sites-available/{domain}"
+    enabled = f"/etc/nginx/sites-enabled/"
+    execute(["ln", "-s", available, enabled])
+
+
 if __name__ == "__main__":
     cprint("Part 2: Nginx Reverse Proxy", color="blue", newline=True)
 
@@ -46,3 +52,5 @@ if __name__ == "__main__":
 
     domain, ip_address = get_server_domain_and_address()
     nginx_server_block = create_nginx_server_block(domain, ip_address)
+
+    enable_site(domain)
