@@ -17,6 +17,8 @@ is_executable() {
     fi
 }
 
+cd $( dirname -- "$0" )
+
 if [[ $(is_running_ubuntu) == true ]]; then 
     apt update
     apt -y upgrade
