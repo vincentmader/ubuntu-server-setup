@@ -38,6 +38,7 @@ def user_does_exist(user):
 def get_ip_address():
     ip_address = execute(["hostname", "-I"], return_output=True)
     if ip_address != None:
+        print(ip_address)
         ip_address = ip_address.split(" ")[0]
         return ip_address
     else:

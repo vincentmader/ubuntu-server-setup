@@ -32,7 +32,6 @@ def create_nginx_server_block(domain, ip_address):
 def get_server_domain_and_address():
     domain = "sonoapp.de"  # TODO Move to config? Get from input?
     ip_address = get_ip_address()
-    print(ip_address, domain)
     return domain, ip_address
 
 
