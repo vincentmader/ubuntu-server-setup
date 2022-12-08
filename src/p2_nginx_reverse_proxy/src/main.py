@@ -25,6 +25,8 @@ def create_nginx_server_block(domain, ip_address):
     content += "        include proxy_params;\n"
     content += "    }\n"
     content += "}"
+    print(content)
+    return content
 
 
 def get_server_domain_and_address():
