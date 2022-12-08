@@ -25,7 +25,10 @@ def create_nginx_server_block(domain, ip_address):
     content += "        include proxy_params;\n"
     content += "    }\n"
     content += "}"
-    print(content)
+
+    path_to_file = f"/etc/nginx/sites-available/{domain}"
+    with open(path_to_file, 'w') as fp:
+        fp.write(content)
     return content
 
 
