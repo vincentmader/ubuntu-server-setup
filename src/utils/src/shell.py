@@ -1,17 +1,17 @@
 from .cprint import cprint
 
-def execute(command, return_output=False):
+def execute(command_args, return_output=False):
     import subprocess
     if is_running_on_ubuntu():
         if return_output is True:
-            output = subprocess.check_output(command)
+            output = subprocess.check_output(command_args)
             return output
         else:
-            error_code = subprocess.Popen(command).wait()
+            error_code = subprocess.Popen(command_args).wait()
             return error_code
     else:
         from termcolor import colored
-        msg = f"Skipping execution of command `{command}`"
+        msg = f"Skipping execution of command `{command_args}`"
         cprint(msg, "yellow", indent=1)
 
 
