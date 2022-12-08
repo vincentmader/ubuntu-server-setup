@@ -3,7 +3,7 @@ from .cprint import cprint
 def execute(command):
     import subprocess
     if is_running_on_ubuntu():
-        subprocess.Popen(command)
+        subprocess.Popen(command).wait()
     else:
         from termcolor import colored
         msg = f"Skipping execution of command `{command}`"

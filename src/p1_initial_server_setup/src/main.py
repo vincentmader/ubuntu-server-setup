@@ -10,7 +10,6 @@ def enable_firewall():
     execute(["ufw", "allow", "OpenSSH"])
     execute(["ufw", "--force", "enable"])
     execute(["ufw", "status"])
-    sleep(1)
 
 
 def create_new_user():
