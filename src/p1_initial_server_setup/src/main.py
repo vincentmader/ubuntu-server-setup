@@ -20,6 +20,7 @@ def set_password(user):
 if __name__ == "__main__":
     cprint("Part 1: Initial Server Setup", color="blue", newline=True)
 
-    user = create_new_user()
+    user = "vinc"
+    # user = create_new_user()
     grant_root_privileges(user)
     set_password(user)
