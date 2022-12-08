@@ -36,11 +36,12 @@ def user_does_exist(user):
 
 
 def get_ip_address():
-    ip_address = execute(["hostname", "-I"], return_output=True)
-    if ip_address != None:
-        ip_address = str(ip_address)
-        ip_address = ip_address.split(" ")[0]
-        return ip_address
+    address = execute(["hostname", "-I"], return_output=True)
+    if address != None:
+        address = str(address)
+        address = address[2:] if address.startswith("b'") else address
+        address = address.split(" ")[0]
+        return address
     else:
         return "127.0.0.1"
 
