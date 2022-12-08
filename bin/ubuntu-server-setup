@@ -3,17 +3,17 @@
 is_running_ubuntu() {
     version="$(cat /etc/issue 2> /dev/null)"
     if [[ $version == *"Ubuntu"* ]]; then
-        echo 0
+        true
     else
-        echo 1
+        false
     fi
 }
 
 is_executable() {
     if command -v "$1" &> /dev/null; then
-        echo 0
+        true
     else
-        echo 1
+        false
     fi
 }
 
