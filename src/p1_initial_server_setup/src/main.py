@@ -8,7 +8,7 @@ from utils.shell import user_does_exist
 def enable_firewall():
     execute(["ufw", "app", "list"])
     execute(["ufw", "allow", "OpenSSH"])
-    execute(["ufw", "enable"])
+    execute(["ufw", "--force", "enable"])
     execute(["ufw", "status"])
     sleep(1)
 
