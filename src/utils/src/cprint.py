@@ -3,7 +3,7 @@ import os
 from termcolor import colored
 
 
-def cprint(text, color=None, indent=0, newline=False):
+def cprint(text, color=None, indent=0, newline=False, end="\n"):
     text = f" {text}"
     if indent:
         text = f" {text}"
@@ -12,7 +12,7 @@ def cprint(text, color=None, indent=0, newline=False):
     if newline:
         text = f"\n{text}"
     colored_text = colored(text, color)
-    print(colored_text)
+    print(colored_text, end=end)
 
 
 def cprint_header(title):
