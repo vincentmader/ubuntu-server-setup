@@ -21,7 +21,7 @@ def create_nginx_server_block(domain, ip_address):
     content += "    server_name {} www.{};\n".format(domain, domain)
     content += "\n"
     content += "    location / {\n"
-    content += "        proxy_pass {};\n".format(ip_address)
+    content += "        proxy_pass http://{};\n".format(ip_address)
     content += "        include proxy_params;\n"
     content += "    }\n"
     content += "}"
