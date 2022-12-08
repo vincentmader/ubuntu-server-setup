@@ -3,22 +3,22 @@
 is_running_ubuntu() {
     version="$(cat /etc/issue 2> /dev/null)"
     if [[ $version == *"Ubuntu"* ]]; then
-        true
+        echo true
     else
-        false
+        echo false
     fi
 }
 
 is_executable() {
     if command -v "$1" &> /dev/null; then
-        true
+        echo true
     else
-        false
+        echo false
     fi
 }
 
-if [[ ! $(is_executable "make") ]]; then 
-    if [[ $(is_running_ubuntu) ]]; then 
+if [[ $(is_executable "make") == false ]]; then 
+    if [[ $(is_running_ubuntu) == true ]]; then 
         apt install make
     else
         echo "Error: These scripts are written for Ubuntu!"
