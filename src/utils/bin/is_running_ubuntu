@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 version="$(cat /etc/issue 2> /dev/null)"
 
