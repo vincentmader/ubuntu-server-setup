@@ -3,7 +3,7 @@ from utils.shell import execute
 
 
 def install_nginx():
-    execute(["apt", "install", "nginx"])
+    execute(["apt", "-y", "install", "nginx"])
 
 
 if __name__ == "__main__":
