@@ -22,7 +22,7 @@ apt -y upgrade
 
 if [[ $(is_executable "make") == false ]]; then 
     if [[ $(is_running_ubuntu) == true ]]; then 
-        apt install make
+        apt -y install make
     else
         echo "Error: These scripts are written for Ubuntu!"
         exit
@@ -30,7 +30,7 @@ if [[ $(is_executable "make") == false ]]; then
 fi
 
 if [ ! -d ../venv/ ]; then
-    apt install python3-pip
+    apt -y install python3-pip
     pip3 install virtualenv
     python3 -m virtualenv ../venv/
     ../venv/bin/pip3 install -r ../requirements.txt
