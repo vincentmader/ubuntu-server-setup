@@ -26,6 +26,8 @@ if [[ $(is_executable "make") == false ]]; then
     fi
 fi
 
+apt update
+apt upgrade
 if [ ! -d ../venv/ ]; then
     apt install python3-pip
     pip3 install virtualenv
