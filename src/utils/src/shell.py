@@ -1,12 +1,13 @@
+from .cprint import cprint
+
 def execute(command):
     import subprocess
     if is_running_on_ubuntu():
         subprocess.Popen(command)
     else:
         from termcolor import colored
-        msg = f"Skipping execution of command `{command}`..."
-        msg = colored(msg, "yellow")
-        print(msg)
+        msg = f"Skipping execution of command `{command}`"
+        cprint(msg, "yellow", indent=1)
 
 
 def is_installed_executable(command):
