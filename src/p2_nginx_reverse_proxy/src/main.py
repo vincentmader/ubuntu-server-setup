@@ -33,7 +33,7 @@ def create_nginx_server_block(address, domain):
     content += "\n    }"
     content += "\n}"
     for line in content.split("\n"):
-        cprint(line, indent=2)
+        cprint(line)
     return content
 
 
@@ -43,6 +43,7 @@ def save_nginx_server_block(content):
         path_to_file = f"/etc/nginx/sites-available/{domain}"
         with open(path_to_file, 'w') as fp:
             fp.write(content)
+        cprint("Saved Nginx server block.", color="green")
 
 
 def enable_site(domain):
@@ -52,6 +53,7 @@ def enable_site(domain):
     site = os.path.join(sites_available, domain)
     if not os.path.exists(sites_enabled):
         execute(["ln", "-s", site, sites_enabled])
+        cprint("Enabled site.", color="green")
 
 
 if __name__ == "__main__":

@@ -21,9 +21,9 @@ def create_new_user():
     user = cfg.USERNAME
     if not user_does_exist(user):
         execute(["useradd", user])
-        cprint(f"Created new user \"{user}\".")
+        cprint(f"Created new user \"{user}\".", color="green")
     else:
-        cprint("User \"{user}\" already exists.")
+        cprint(f"User \"{user}\" already exists.", color="yellow")
     return user
 
 
@@ -31,7 +31,7 @@ def grant_root_privileges(user):
     """Grants root privileges to `user`."""
     cprint_underlined(f"Granting root privileges to user \"{user}\"...")
     execute(["usermod", "-aG", "sudo", user])
-    cprint(f"Granted root privileges to user \"{user}\".")
+    cprint(f"Granted root privileges to user \"{user}\".", color="green")
 
 
 def set_password(user):
