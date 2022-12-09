@@ -48,11 +48,11 @@ def save_nginx_server_block(content):
 
 def enable_site(domain):
     cprint_underlined("Enabling site...")
-    sites_available = f"/etc/nginx/sites-available/"
-    sites_enabled = f"/etc/nginx/sites-enabled/"
-    site = os.path.join(sites_available, domain)
-    if not os.path.exists(sites_enabled):
-        execute(["ln", "-s", site, sites_enabled])
+    origin = f"/etc/nginx/sites-available/{domain}"
+    target = f"/etc/nginx/sites-enabled/{domain}"
+    if os.path.exists(target):
+        os.remove(target)
+    execute(["ln", "-s", origin, target])
     cprint("Site is enabled.", color="green")
 
 
