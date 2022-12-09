@@ -3,7 +3,7 @@ import os
 from termcolor import colored
 
 
-def cprint(text, color="cyan", indent=0, newline=False, end="\n"):
+def cprint(text, color=None, indent=0, newline=False, end="\n"):
     text = f"{text}"
     if indent:
         for _ in range(indent):
