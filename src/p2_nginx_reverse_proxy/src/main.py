@@ -68,3 +68,4 @@ if __name__ == "__main__":
     save_nginx_server_block(server_block)
 
     enable_site(domain)
+    print()
