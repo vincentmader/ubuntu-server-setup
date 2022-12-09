@@ -1,10 +1,13 @@
+import config as cfg
 from utils.cprint import cprint
+from utils.cprint import cprint_header
 from utils.shell import execute
 from utils.shell import user_does_exist
 
 
 def enable_firewall():
     """Enables UFW firewall & allows OpenSSH traffic."""
+    cprint("Setting up firewall...", indent=1)
     execute(["ufw", "app", "list"])
     execute(["ufw", "allow", "OpenSSH"])
     execute(["ufw", "--force", "enable"])
@@ -13,8 +16,7 @@ def enable_firewall():
 
 def create_new_user():
     cprint("Creating new user...", indent=1)
-    cprint("Username: ", end="", indent=1)
-    user = input()
+    user = cfg.USERNAME
     if not user_does_exist(user):
         execute(["useradd", user])
     return user
@@ -30,7 +32,7 @@ def set_password(user):
 
 
 if __name__ == "__main__":
-    cprint("Part 1: Initial Server Setup", color="blue", newline=True)
+    cprint_header("Part 1: Initial Server Setup")
 
     user = "vinc"
     user = create_new_user()

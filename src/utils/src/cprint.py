@@ -3,10 +3,9 @@ import os
 from termcolor import colored
 
 
-def cprint(text, color=None, indent=0, newline=False, end="\n"):
-    text = f" {text}"
+def cprint(text, color="cyan", indent=0, newline=False, end="\n"):
+    text = f"  {text}"
     if indent:
-        text = f" {text}"
         for _ in range(indent):
             text = f"  {text}"
     if newline:
@@ -15,11 +14,11 @@ def cprint(text, color=None, indent=0, newline=False, end="\n"):
     print(colored_text, end=end)
 
 
-def cprint_header(title):
+def cprint_header(title, color="blue"):
     terminal_size = os.get_terminal_size()
     terminal_width = terminal_size.columns
     title = f"{title} " if len(title) % 2 != 0 else title
-    pad = 2
+    pad = 3
     a = (terminal_width - 2*pad - 2)
     b = int((a - len(title))/2)
     c = pad * ' '
@@ -30,5 +29,5 @@ def cprint_header(title):
     text += f"{c}╭{e}╮{c}\n"
     text += f"{c}│{d}{f}{title}{d}│{c}\n"
     text += f"{c}╰{e}╯{c}"
-    colored_text = colored(text, "blue")
+    colored_text = colored(text, color)
     print(colored_text)

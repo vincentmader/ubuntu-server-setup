@@ -3,7 +3,7 @@ from .cprint import cprint
 
 def execute(command_args, check_output=False):
     if not is_running_on_ubuntu():
-        cprint(f"Skipping `{' '.join(command_args)}`", "yellow", indent=1)
+        cprint(f"Skipping `{' '.join(command_args)}`", "yellow", indent=2)
         return None
 
     import subprocess
