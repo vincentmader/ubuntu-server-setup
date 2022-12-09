@@ -17,7 +17,6 @@ def install_nginx():
 def configure_nginx_firewall_access():
     cprint_underlined("Configuring Nginx firewall access...")
     execute(["ufw", "allow", "Nginx HTTP"])
-    execute(["systemctl", "status", "nginx"])
 
 
 def create_nginx_server_block(address, domain):
