@@ -4,10 +4,10 @@ from termcolor import colored
 
 
 def cprint(text, color="cyan", indent=0, newline=False, end="\n"):
-    text = f"  {text}"
+    text = f"{text}"
     if indent:
         for _ in range(indent):
-            text = f"  {text}"
+            text = f"   {text}"
     if newline:
         print()
     colored_text = colored(text, color)
@@ -20,7 +20,7 @@ def cprint_underlined(text, color="cyan", indent=0, newline=True):
     cprint(text, indent=indent, color=color)
     terminal_width = get_terminal_width()
     pad = 0
-    text = (pad+1)*" " + "-" * (terminal_width - 2*pad-2)
+    text = "-" * (terminal_width - 2*pad)
     colored_text = colored(text, color)
     print(colored_text)
 
