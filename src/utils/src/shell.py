@@ -40,7 +40,7 @@ def user_does_exist(user):
 def get_ip_address():
     """Determines IP address of host machine."""
     address = execute(["hostname", "-I"], check_output=True)
-    if type(address) is str:
+    try:
         return address.decode("utf-8").split(" ")[0]
-    else:
+    except Exception:
         return None
