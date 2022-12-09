@@ -1,11 +1,10 @@
-from time import sleep
-
 from utils.cprint import cprint
 from utils.shell import execute
 from utils.shell import user_does_exist
 
 
 def enable_firewall():
+    """Enables UFW firewall & allows OpenSSH traffic."""
     execute(["ufw", "app", "list"])
     execute(["ufw", "allow", "OpenSSH"])
     execute(["ufw", "--force", "enable"])

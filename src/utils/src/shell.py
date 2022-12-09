@@ -1,47 +1,46 @@
 from .cprint import cprint
 
-def execute(command_args, return_output=False):
+
+def execute(command_args, check_output=False):
+    if not is_running_on_ubuntu():
+        cprint(f"Skipping `{' '.join(command_args)}`", "yellow", indent=1)
+        return None
+
     import subprocess
-    if is_running_on_ubuntu():
-        if return_output is True:
-            output = subprocess.check_output(command_args)
-            return output
-        else:
-            error_code = subprocess.Popen(command_args).wait()
-            return error_code
+    if check_output is True:
+        output = subprocess.check_output(command_args)
+        return output
     else:
-        from termcolor import colored
-        msg = f"Skipping execution of command `{command_args}`"
-        cprint(msg, "yellow", indent=1)
+        error_code = subprocess.Popen(command_args).wait()
+        return error_code
 
 
 def is_installed_executable(command):
-    """Check whether `command` is on PATH and marked as executable."""
+    """Checks whether `command` is on PATH and marked as executable."""
     from shutil import which
     return which(command) is not None
 
 
 def is_running_on_ubuntu():
+    """Checks whether host machine is running Ubuntu (>14.04)."""
     import platform
     return 'ubuntu' in platform.version().lower()
 
 
 def user_does_exist(user):
+    """Checks whether `user` exists on host machine."""
     import pwd
     try:
         pwd.getpwnam(user)
+        return True
     except KeyError:
         return False
-    return True
 
 
 def get_ip_address():
-    address = execute(["hostname", "-I"], return_output=True)
-    if address != None:
-        address = str(address)
-        address = address[2:] if address.startswith("b'") else address
-        address = address.split(" ")[0]
-        return address
+    """Determines IP address of host machine."""
+    address = execute(["hostname", "-I"], check_output=True)
+    if type(address) is str:
+        return address.decode("utf-8").split(" ")[0]
     else:
-        return "127.0.0.1"
-
+        return None
