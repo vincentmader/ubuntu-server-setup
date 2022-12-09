@@ -19,7 +19,7 @@ def cprint_underlined(text, color="cyan", indent=0, newline=True):
         print()
     cprint(text, indent=indent, color=color)
     terminal_width = get_terminal_width()
-    pad = 3
+    pad = 0
     text = (pad+1)*" " + "-" * (terminal_width - 2*pad-2)
     colored_text = colored(text, color)
     print(colored_text)
@@ -28,7 +28,7 @@ def cprint_underlined(text, color="cyan", indent=0, newline=True):
 def cprint_header(title, color="blue"):
     terminal_width = get_terminal_width()
     title = f"{title} " if len(title) % 2 != 0 else title
-    pad = 3
+    pad = 0
     a = (terminal_width - 2*pad - 2)
     b = int((a - len(title))/2)
     c = pad * ' '
