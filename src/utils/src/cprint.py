@@ -14,7 +14,7 @@ def cprint(text, color=None, indent=0, newline=False, end="\n"):
     print(colored_text, end=end)
 
 
-def cprint_underlined(text, color="cyan", indent=0, newline=True):
+def cprint_underlined(text, color="blue", indent=0, newline=True):
     if newline:
         print()
     cprint(text, indent=indent, color=color)
