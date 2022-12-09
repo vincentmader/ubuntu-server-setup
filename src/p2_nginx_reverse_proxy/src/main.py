@@ -10,18 +10,18 @@ from utils.shell import is_running_on_ubuntu
 
 
 def install_nginx():
-    cprint_underlined("Installing Nginx...", color="cyan")
+    cprint_underlined("Installing Nginx...")
     execute(["apt", "-y", "install", "nginx"])
 
 
 def configure_nginx_firewall_access():
-    cprint_underlined("Configuring Nginx firewall access...", color="cyan")
+    cprint_underlined("Configuring Nginx firewall access...")
     execute(["ufw", "allow", "Nginx HTTP"])
     execute(["systemctl", "status", "nginx"])
 
 
 def create_nginx_server_block(address, domain):
-    cprint_underlined("Creating Nginx server block...", color="cyan")
+    cprint_underlined("Creating Nginx server block...")
     content = "server {"
     content += "\n    listen 80;"
     content += "\n    listen [::]:80;"
@@ -34,12 +34,12 @@ def create_nginx_server_block(address, domain):
     content += "\n    }"
     content += "\n}"
     for line in content.split("\n"):
-        cprint(line, indent=2, color=None)
+        cprint(line, indent=2)
     return content
 
 
 def save_nginx_server_block(content):
-    cprint_underlined("Saving Nginx server block to file...", color="cyan")
+    cprint_underlined("Saving Nginx server block to file...")
     if is_running_on_ubuntu():
         path_to_file = f"/etc/nginx/sites-available/{domain}"
         with open(path_to_file, 'w') as fp:
@@ -47,7 +47,7 @@ def save_nginx_server_block(content):
 
 
 def enable_site(domain):
-    cprint_underlined("Enabling site...", color="cyan")
+    cprint_underlined("Enabling site...")
     sites_available = f"/etc/nginx/sites-available/"
     sites_enabled = f"/etc/nginx/sites-enabled/"
     site = os.path.join(sites_available, domain)
