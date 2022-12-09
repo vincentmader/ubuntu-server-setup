@@ -53,7 +53,7 @@ def enable_site(domain):
     site = os.path.join(sites_available, domain)
     if not os.path.exists(sites_enabled):
         execute(["ln", "-s", site, sites_enabled])
-        cprint("Enabled site.", color="green")
+    cprint("Site is enabled.", color="green")
 
 
 if __name__ == "__main__":

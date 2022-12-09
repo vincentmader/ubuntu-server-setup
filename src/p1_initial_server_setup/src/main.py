@@ -8,11 +8,12 @@ from utils.shell import user_does_exist
 
 def enable_firewall():
     """Enables UFW firewall & allows OpenSSH traffic."""
-    cprint_underlined("Setting up firewall...")
+    cprint_underlined("Enabling up firewall...")
     execute(["ufw", "app", "list"])
     execute(["ufw", "allow", "OpenSSH"])
     execute(["ufw", "--force", "enable"])
     execute(["ufw", "status"])
+    cprint("Enabled firewall.", color="green")
 
 
 def create_new_user():
