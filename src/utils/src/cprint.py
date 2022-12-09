@@ -9,14 +9,24 @@ def cprint(text, color="cyan", indent=0, newline=False, end="\n"):
         for _ in range(indent):
             text = f"  {text}"
     if newline:
-        text = f"\n{text}"
+        print()
     colored_text = colored(text, color)
     print(colored_text, end=end)
 
 
+def cprint_underlined(text, color="cyan", indent=0, newline=True):
+    if newline:
+        print()
+    cprint(text, indent=indent, color=color)
+    terminal_width = get_terminal_width()
+    pad = 3
+    text = (pad+1)*" " + "-" * (terminal_width - 2*pad-2)
+    colored_text = colored(text, color)
+    print(colored_text)
+
+
 def cprint_header(title, color="blue"):
-    terminal_size = os.get_terminal_size()
-    terminal_width = terminal_size.columns
+    terminal_width = get_terminal_width()
     title = f"{title} " if len(title) % 2 != 0 else title
     pad = 3
     a = (terminal_width - 2*pad - 2)
@@ -31,3 +41,8 @@ def cprint_header(title, color="blue"):
     text += f"{c}╰{e}╯{c}"
     colored_text = colored(text, color)
     print(colored_text)
+
+
+def get_terminal_width():
+    terminal_size = os.get_terminal_size()
+    return terminal_size.columns
