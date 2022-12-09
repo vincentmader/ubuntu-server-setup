@@ -1,4 +1,5 @@
 import config as cfg
+from utils.cprint import cprint
 from utils.cprint import cprint_underlined
 from utils.cprint import cprint_header
 from utils.shell import execute
@@ -15,15 +16,22 @@ def enable_firewall():
 
 
 def create_new_user():
+    """Creates new user (username specified in `../../config.py`)."""
     cprint_underlined("Creating new user...")
     user = cfg.USERNAME
     if not user_does_exist(user):
         execute(["useradd", user])
+        cprint(f"Created new user \"{user}\".")
+    else:
+        cprint("User \"{user}\" already exists.")
     return user
 
 
 def grant_root_privileges(user):
+    """Grants root privileges to `user`."""
+    cprint_underlined(f"Granting root privileges to user \"{user}\"...")
     execute(["usermod", "-aG", "sudo", user])
+    cprint(f"Granted root privileges to user \"{user}\".")
 
 
 def set_password(user):

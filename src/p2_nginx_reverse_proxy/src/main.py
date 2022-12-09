@@ -11,7 +11,9 @@ from utils.shell import is_running_on_ubuntu
 
 def install_nginx():
     cprint_underlined("Installing Nginx...")
-    execute(["apt", "-y", "install", "nginx"])
+    exit_code = execute(["apt", "-y", "install", "nginx"])
+    if exit_code == 0:
+        cprint("Installed Nginx.", color="green")
 
 
 def configure_nginx_firewall_access():
